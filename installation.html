@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation - Basil Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* Sidebar hover effects */
+        .sidebar-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Card hover effects */
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hot badge */
+        .hot-badge {
+            background: linear-gradient(135deg, #ff6b35, #ff8e53);
+        }
+
+        /* Code syntax highlighting */
+        .code-block {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #e2e8f0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .code-inline {
+            background: #f1f5f9;
+            padding: 0.125rem 0.25rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875em;
+        }
+
+        .warning-box {
+            border-left: 4px solid #f59e0b;
+            background: #fef3c7;
+        }
+
+        .info-box {
+            border-left: 4px solid #3b82f6;
+            background: #dbeafe;
+        }
+
+        .success-box {
+            border-left: 4px solid #10b981;
+            background: #d1fae5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-black rounded-md flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-semibold text-gray-900">Basil Docs</h1>
+                    <p class="text-xs text-gray-500">v1.0.0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" placeholder="Search" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex-1 overflow-y-auto">
+            <nav class="p-4 space-y-2">
+                <a href="docs.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Documentation</span>
+                    </div>
+                </a>
+
+                <div class="sidebar-item p-2 rounded-md cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Themes</span>
+                        </div>
+                        <span class="hot-badge text-xs text-white px-2 py-1 rounded-full font-medium">Hot</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/basil-retriever/Basil" target="_blank" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">GitHub</span>
+                        <svg class="w-3 h-3 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </div>
+                </a>
+            </nav>
+
+            <div class="px-4 py-2">
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Menu</p>
+            </div>
+
+            <nav class="px-4 space-y-1">
+                <a href="getting-started.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.67 10.73a3.52 3.52 0 0 0-.94 1.93 5 5 0 0 0-.07 1.1v.58h.8a5.05 5.05 0 0 0 .88-.08 3.46 3.46 0 0 0 1.93-.94 1.76 1.76 0 0 0-.14-2.48 1.76 1.76 0 0 0-2.46-.11zm1.74 1.73a2.26 2.26 0 0 1-1.26.6h-.22v-.22a2.26 2.26 0 0 1 .6-1.26.36.36 0 0 1 .24-.08.67.67 0 0 1 .47.22.54.54 0 0 1 .17.74zM14.65 2.24a.91.91 0 0 0-.89-.89A8.75 8.75 0 0 0 7.27 3.5L5.64 5.4l-2.4-.5a1 1 0 0 0-.92.27l-.68.68a1 1 0 0 0-.28.81 1 1 0 0 0 .45.74l2.06 1.32.13.08 3.2 3.25.08.08 1.32 2.06a1 1 0 0 0 .74.45h.11a1 1 0 0 0 .7-.29l.68-.68a1 1 0 0 0 .27-.92l-.5-2.39 1.84-1.58a8.79 8.79 0 0 0 2.21-6.54zM3.11 6.15l1.32.28-.64.75-1-.67zm6.38 7.1-.67-1 .75-.64.28 1.32zm2.39-5.11.18.17zm-.28-.28L7.92 11 5 8.08 8.14 4.4a7.44 7.44 0 0 1 5.26-1.8 7.48 7.48 0 0 1-1.8 5.26z"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Getting Started</span>
+                    </div>
+                </a>
+
+                <a href="installation.html" class="sidebar-item p-2 rounded-md cursor-pointer bg-blue-50 border-l-4 border-blue-500 block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-blue-900">Installation</span>
+                    </div>
+                </a>
+
+                <a href="api-overview.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">API Overview</span>
+                    </div>
+                </a>
+
+                <a href="roadmap.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-6-6 6-6M15 4l6 6-6 6"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Roadmap</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b border-gray-200 px-6 py-4">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <span>Basil</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span>Installation</span>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto bg-gray-50">
+            <div class="max-w-4xl mx-auto px-6 py-8">
+                <!-- Header -->
+                <div class="mb-8">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Installation</h1>
+                    <p class="text-lg text-gray-600">Multiple installation methods to get Basil running in your environment. Choose the method that works best for your setup.</p>
+                </div>
+
+                <!-- Prerequisites section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Prerequisites</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900 mb-3">Required</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700"><strong>Docker</strong> (recommended) or <strong>Python 3.11+</strong></span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700"><strong>Groq API Key</strong> (for AI processing)</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700"><strong>Git</strong> for cloning the repository</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900 mb-3">System Requirements</h3>
+                                <ul class="space-y-2 text-gray-700">
+                                    <li>• <strong>Memory:</strong> 2GB RAM minimum, 4GB recommended</li>
+                                    <li>• <strong>Storage:</strong> 1GB available space</li>
+                                    <li>• <strong>Network:</strong> Internet connection for AI API calls</li>
+                                    <li>• <strong>OS:</strong> Linux, macOS, or Windows</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 info-box p-4 rounded-lg">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <div>
+                                    <p class="text-blue-800 font-medium">Groq API Key Required</p>
+                                    <p class="text-blue-700 text-sm mt-1">Get your free Groq API key at <a href="https://console.groq.com" class="underline">console.groq.com</a>. The free tier includes generous usage limits perfect for getting started.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Docker Installation (Recommended) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Method 1: Docker Installation (Recommended)</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <div class="success-box p-4 rounded-lg mb-6">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-green-800 font-medium">Recommended for production and easy deployment</span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Step 1: Clone the Repository</h3>
+                        <div class="code-block">
+git clone https://github.com/basil-retriever/Basil
+cd Basil</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Step 2: Configure Environment</h3>
+                        <p class="text-gray-700 mb-4">Copy the environment template and add your Groq API key:</p>
+                        <div class="code-block">
+cp .env.example .env
+# Edit .env and add your GROQ_API_KEY</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Step 3: Launch with Docker Compose</h3>
+                        <div class="code-block">
+docker-compose up -d</div>
+
+                        <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-900 mb-2">What this does:</h4>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Builds the Basil application container</li>
+                                <li>• Sets up ChromaDB for vector storage</li>
+                                <li>• Configures networking between services</li>
+                                <li>• Exposes API on port 8000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Installation -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Method 2: Manual Installation</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <div class="warning-box p-4 rounded-lg mb-6">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L5.268 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                                <span class="text-yellow-800 font-medium">Requires Python 3.11+ and manual dependency management</span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Step 1: Clone and Navigate</h3>
+                        <div class="code-block">
+git clone https://github.com/basil-retriever/Basil
+cd Basil/basil-search</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Step 2: Create Virtual Environment (Recommended)</h3>
+                        <div class="code-block">
+python -m venv basil-env
+source basil-env/bin/activate  # On Windows: basil-env\Scripts\activate</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Step 3: Install Dependencies</h3>
+                        <div class="code-block">
+pip install -r requirements.txt</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Step 4: Configure Environment</h3>
+                        <div class="code-block">
+cp .env.example .env
+# Edit .env and add your GROQ_API_KEY</div>
+
+                        <div class="mt-6">
+                            <h4 class="font-medium text-gray-900 mb-3">Key Dependencies Installed:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p class="font-medium text-gray-700">Core Framework:</p>
+                                    <ul class="text-gray-600 mt-1 space-y-1">
+                                        <li>• FastAPI 0.104.1</li>
+                                        <li>• Uvicorn 0.24.0</li>
+                                        <li>• ChromaDB 0.4.15</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-700">AI & Processing:</p>
+                                    <ul class="text-gray-600 mt-1 space-y-1">
+                                        <li>• Sentence Transformers 2.2.2</li>
+                                        <li>• BeautifulSoup4 4.12.2</li>
+                                        <li>• Requests 2.31.0</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Configuration</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Environment Variables</h3>
+                        <p class="text-gray-700 mb-4">Configure Basil by setting these environment variables in your <span class="code-inline">.env</span> file:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full table-auto text-sm">
+                                <thead>
+                                    <tr class="border-b border-gray-200">
+                                        <th class="text-left py-2 font-medium text-gray-900">Variable</th>
+                                        <th class="text-left py-2 font-medium text-gray-900">Description</th>
+                                        <th class="text-left py-2 font-medium text-gray-900">Default</th>
+                                        <th class="text-left py-2 font-medium text-gray-900">Required</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="py-2 font-mono text-gray-900">GROQ_API_KEY</td>
+                                        <td class="py-2 text-gray-700">API key for Groq AI processing</td>
+                                        <td class="py-2 text-gray-500">-</td>
+                                        <td class="py-2">
+                                            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Yes</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-mono text-gray-900">API_HOST</td>
+                                        <td class="py-2 text-gray-700">Server host address</td>
+                                        <td class="py-2 text-gray-500">0.0.0.0</td>
+                                        <td class="py-2">
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">No</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-mono text-gray-900">API_PORT</td>
+                                        <td class="py-2 text-gray-700">Server port</td>
+                                        <td class="py-2 text-gray-500">8000</td>
+                                        <td class="py-2">
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">No</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-mono text-gray-900">CHROMA_COLLECTION_NAME</td>
+                                        <td class="py-2 text-gray-700">Database collection name</td>
+                                        <td class="py-2 text-gray-500">basil_docs</td>
+                                        <td class="py-2">
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">No</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-mono text-gray-900">EMBEDDING_MODEL</td>
+                                        <td class="py-2 text-gray-700">Sentence transformer model</td>
+                                        <td class="py-2 text-gray-500">all-MiniLM-L6-v2</td>
+                                        <td class="py-2">
+                                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">No</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-8">Example .env File</h3>
+                        <div class="code-block">
+# Required
+GROQ_API_KEY=your_groq_api_key_here
+
+# Optional (with defaults)
+API_HOST=0.0.0.0
+API_PORT=8000
+CHROMA_COLLECTION_NAME=basil_docs
+EMBEDDING_MODEL=all-MiniLM-L6-v2</div>
+                    </div>
+                </div>
+
+                <!-- Production Deployment -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Production Deployment</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Docker Compose with Nginx</h3>
+                        <p class="text-gray-700 mb-4">For production deployments, use the included Nginx reverse proxy:</p>
+                        <div class="code-block">
+docker-compose --profile production up -d</div>
+
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-medium text-gray-900 mb-2">Production Features:</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Nginx reverse proxy</li>
+                                    <li>• SSL/TLS termination ready</li>
+                                    <li>• Load balancing capabilities</li>
+                                    <li>• Static file serving</li>
+                                    <li>• Gzip compression</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 mb-2">Performance Benefits:</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• 100+ concurrent users</li>
+                                    <li>• Sub-second search responses</li>
+                                    <li>• Efficient resource usage</li>
+                                    <li>• Automatic container restart</li>
+                                    <li>• Health check monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Verify Installation</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Check Configuration</h3>
+                        <div class="code-block">
+python pipeline.py --check-config</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Test API Health</h3>
+                        <div class="code-block">
+curl http://localhost:8000/health</div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-4 mt-6">Expected Response</h3>
+                        <div class="code-block">
+{
+  "status": "healthy",
+  "version": "1.0.0",
+  "components": {
+    "database": "connected",
+    "ai_service": "available"
+  }
+}</div>
+
+                        <div class="mt-6 success-box p-4 rounded-lg">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-green-800 font-medium">Installation Complete!</span>
+                            </div>
+                            <p class="text-green-700 text-sm mt-2">If you see the healthy response, Basil is ready to scrape and search websites.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Next Steps</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Get Started</h3>
+                            <p class="text-gray-600 mb-4">Learn how to scrape your first website and start searching with Basil.</p>
+                            <a href="getting-started.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                                View Getting Started Guide
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">API Documentation</h3>
+                            <p class="text-gray-600 mb-4">Explore all available endpoints and integrate Basil into your applications.</p>
+                            <a href="api-overview.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                                View API Reference
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

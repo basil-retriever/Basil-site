@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap - Basil Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* Sidebar hover effects */
+        .sidebar-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Card hover effects */
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hot badge */
+        .hot-badge {
+            background: linear-gradient(135deg, #ff6b35, #ff8e53);
+        }
+
+        /* Version status badges */
+        .status-current { background: #10b981; }
+        .status-in-progress { background: #3b82f6; }
+        .status-planned { background: #6b7280; }
+        .status-future { background: #8b5cf6; }
+
+        /* Timeline styling */
+        .timeline-line {
+            position: absolute;
+            left: 1.25rem;
+            top: 2rem;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #e5e7eb);
+        }
+
+        .timeline-dot {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 30%, #6b7280 60%, #8b5cf6 100%);
+            height: 6px;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            width: 15%;
+            animation: progress-animation 3s ease-in-out infinite;
+        }
+
+        @keyframes progress-animation {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(600%); }
+        }
+
+        /* Feature category colors */
+        .category-core { border-left-color: #10b981; background: #ecfdf5; }
+        .category-cms { border-left-color: #3b82f6; background: #dbeafe; }
+        .category-ai { border-left-color: #8b5cf6; background: #f3e8ff; }
+        .category-enterprise { border-left-color: #f59e0b; background: #fef3c7; }
+        .category-security { border-left-color: #ef4444; background: #fee2e2; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-black rounded-md flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-semibold text-gray-900">Basil Docs</h1>
+                    <p class="text-xs text-gray-500">v0.0.1</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" placeholder="Search" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex-1 overflow-y-auto">
+            <nav class="p-4 space-y-2">
+                <a href="docs.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Documentation</span>
+                    </div>
+                </a>
+
+                <div class="sidebar-item p-2 rounded-md cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Themes</span>
+                        </div>
+                        <span class="hot-badge text-xs text-white px-2 py-1 rounded-full font-medium">Hot</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/basil-retriever/Basil" target="_blank" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">GitHub</span>
+                        <svg class="w-3 h-3 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </div>
+                </a>
+            </nav>
+
+            <div class="px-4 py-2">
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Menu</p>
+            </div>
+
+            <nav class="px-4 space-y-1">
+                <a href="getting-started.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.67 10.73a3.52 3.52 0 0 0-.94 1.93 5 5 0 0 0-.07 1.1v.58h.8a5.05 5.05 0 0 0 .88-.08 3.46 3.46 0 0 0 1.93-.94 1.76 1.76 0 0 0-.14-2.48 1.76 1.76 0 0 0-2.46-.11zm1.74 1.73a2.26 2.26 0 0 1-1.26.6h-.22v-.22a2.26 2.26 0 0 1 .6-1.26.36.36 0 0 1 .24-.08.67.67 0 0 1 .47.22.54.54 0 0 1 .17.74zM14.65 2.24a.91.91 0 0 0-.89-.89A8.75 8.75 0 0 0 7.27 3.5L5.64 5.4l-2.4-.5a1 1 0 0 0-.92.27l-.68.68a1 1 0 0 0-.28.81 1 1 0 0 0 .45.74l2.06 1.32.13.08 3.2 3.25.08.08 1.32 2.06a1 1 0 0 0 .74.45h.11a1 1 0 0 0 .7-.29l.68-.68a1 1 0 0 0 .27-.92l-.5-2.39 1.84-1.58a8.79 8.79 0 0 0 2.21-6.54zM3.11 6.15l1.32.28-.64.75-1-.67zm6.38 7.1-.67-1 .75-.64.28 1.32zm2.39-5.11.18.17zm-.28-.28L7.92 11 5 8.08 8.14 4.4a7.44 7.44 0 0 1 5.26-1.8 7.48 7.48 0 0 1-1.8 5.26z"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Getting Started</span>
+                    </div>
+                </a>
+
+                <a href="installation.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Installation</span>
+                    </div>
+                </a>
+
+                <a href="api-overview.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">API Overview</span>
+                    </div>
+                </a>
+
+                <a href="roadmap.html" class="sidebar-item p-2 rounded-md cursor-pointer bg-blue-50 border-l-4 border-blue-500 block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-6-6 6-6M15 4l6 6-6 6"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-blue-900">Roadmap</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b border-gray-200 px-6 py-4">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <span>Basil</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span>Roadmap</span>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto bg-gray-50">
+            <div class="max-w-4xl mx-auto px-6 py-8">
+                <!-- Header -->
+                <div class="mb-8">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Product Roadmap</h1>
+                    <p class="text-lg text-gray-600">Our journey from MVP to enterprise-ready platform. Track our progress and see what's coming next for Basil.</p>
+                </div>
+
+                <!-- Progress Overview -->
+                <div class="mb-12">
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-semibold text-gray-900">Development Progress</h2>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium text-gray-600">v0.0.1</span>
+                                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                                <span class="text-sm font-medium text-gray-900">v1.0.0</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-indicator"></div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-green-600">✓</div>
+                                <div class="text-sm text-gray-600">Core Features</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-blue-600">⚡</div>
+                                <div class="text-sm text-gray-600">In Progress</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gray-400">⏳</div>
+                                <div class="text-sm text-gray-600">Planned</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-purple-600">🚀</div>
+                                <div class="text-sm text-gray-600">Future</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Release Timeline</h2>
+                    <div class="relative">
+                        <div class="timeline-line"></div>
+                        
+                        <!-- Current Version -->
+                        <div class="relative mb-8">
+                            <div class="timeline-dot flex items-center mb-4">
+                                <div class="w-10 h-10 status-current rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-2">
+                                        <h3 class="text-lg font-semibold text-gray-900">v0.0.1 - MVP Release</h3>
+                                        <span class="status-current text-white text-xs px-2 py-1 rounded-full font-medium">Current</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Released July 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-14 category-core border-l-4 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-2">Core Foundation</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Website scraping with intelligent link discovery</li>
+                                    <li>• AI-powered content processing with Groq API</li>
+                                    <li>• Semantic search using ChromaDB</li>
+                                    <li>• RESTful API with FastAPI</li>
+                                    <li>• Docker containerization</li>
+                                    <li>• Basic documentation and examples</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- v0.1.0 -->
+                        <div class="relative mb-8">
+                            <div class="timeline-dot flex items-center mb-4">
+                                <div class="w-10 h-10 status-in-progress rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-2">
+                                        <h3 class="text-lg font-semibold text-gray-900">v0.1.0 - Enhanced Search</h3>
+                                        <span class="status-in-progress text-white text-xs px-2 py-1 rounded-full font-medium">In Progress</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Expected October 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-14 category-core border-l-4 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-2">Search & Performance</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Advanced filtering and search operators</li>
+                                    <li>• Real-time search suggestions</li>
+                                    <li>• Improved scraping performance (3-5 pages/second)</li>
+                                    <li>• Multi-language content support</li>
+                                    <li>• Search analytics and metrics</li>
+                                    <li>• Web interface for search testing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- v0.2.0 -->
+                        <div class="relative mb-8">
+                            <div class="timeline-dot flex items-center mb-4">
+                                <div class="w-10 h-10 status-planned rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-2">
+                                        <h3 class="text-lg font-semibold text-gray-900">v0.2.0 - CMS Integration</h3>
+                                        <span class="status-planned text-white text-xs px-2 py-1 rounded-full font-medium">Planned</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Expected November 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-14 category-cms border-l-4 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-2">Content Management System</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Integrated CMS with component rendering</li>
+                                    <li>• Drag-and-drop page builder</li>
+                                    <li>• Pre-built starter themes and templates</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- v0.3.0 -->
+                        <div class="relative mb-8">
+                            <div class="timeline-dot flex items-center mb-4">
+                                <div class="w-10 h-10 status-planned rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-2">
+                                        <h3 class="text-lg font-semibold text-gray-900">v0.3.0 - Private AI & Local Deployment</h3>
+                                        <span class="status-planned text-white text-xs px-2 py-1 rounded-full font-medium">Planned</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Expected December 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-14 category-ai border-l-4 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-2">Private & Local AI</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Ollama integration for local AI processing</li>
+                                    <li>• Private codebase scraping and indexing</li>
+                                    <li>• Secure web application content analysis</li>
+                                    <li>• Air-gapped deployment options</li>
+                                    <li>• Custom model fine-tuning capabilities</li>
+                                    <li>• Enhanced privacy and data protection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- v1.0.0 -->
+                        <div class="relative">
+                            <div class="timeline-dot flex items-center mb-4">
+                                <div class="w-10 h-10 status-future rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-2">
+                                        <h3 class="text-lg font-semibold text-gray-900">v1.0.0 - Stable Release</h3>
+                                        <span class="status-future text-white text-xs px-2 py-1 rounded-full font-medium">Future</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">Expected Q1 2026</p>
+                                </div>
+                            </div>
+                            <div class="ml-14 category-security border-l-4 rounded-lg p-4">
+                                <h4 class="font-medium text-gray-900 mb-2">Production-Ready & Security</h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Performance optimization for enterprise scale</li>
+                                    <li>• Stable application</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Categories -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Feature Categories</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="category-core border-l-4 rounded-lg p-6 bg-white border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 mb-3">Core Platform</h3>
+                            <p class="text-gray-600 text-sm mb-3">Fundamental features that power Basil's search and scraping capabilities.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Search Engine</span>
+                                    <span class="text-green-600 font-medium">✓ Complete</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Web Scraping</span>
+                                    <span class="text-green-600 font-medium">✓ Complete</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Performance Optimization</span>
+                                    <span class="text-blue-600 font-medium">⚡ In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-cms border-l-4 rounded-lg p-6 bg-white border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 mb-3">Content Management</h3>
+                            <p class="text-gray-600 text-sm mb-3">Tools for creating, managing, and customizing content experiences.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Visual Page Builder</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Theme System</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Component Library</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-ai border-l-4 rounded-lg p-6 bg-white border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 mb-3">AI & Privacy</h3>
+                            <p class="text-gray-600 text-sm mb-3">Local AI processing and private deployment capabilities.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Ollama Integration</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Private Codebases</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-enterprise border-l-4 rounded-lg p-6 bg-white border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 mb-3">Enterprise</h3>
+                            <p class="text-gray-600 text-sm mb-3">Advanced features for team collaboration and enterprise deployment.</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Multi-tenant Architecture</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Advanced Analytics</span>
+                                    <span class="text-gray-500 font-medium">⏳ Planned</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Security Compliance</span>
+                                    <span class="text-purple-600 font-medium">🚀 Future</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Get Involved -->
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Get Involved</h2>
+                    <p class="text-gray-600 mb-6">Help shape the future of Basil by contributing to our open-source project or sharing your feedback.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-gray-900 mb-2">Contribute Code</h3>
+                            <p class="text-sm text-gray-600 mb-4">Submit pull requests, report bugs, or suggest new features on GitHub.</p>
+                            <a href="https://github.com/basil-retriever/Basil" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                View on GitHub →
+                            </a>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-gray-900 mb-2">Share Feedback</h3>
+                            <p class="text-sm text-gray-600 mb-4">Help us prioritize features by sharing your use cases and suggestions.</p>
+                            <a href="https://github.com/basil-retriever/Basil/discussions" target="_blank" class="text-green-600 hover:text-green-800 text-sm font-medium">
+                                Join Discussions →
+                            </a>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-gray-900 mb-2">Request Features</h3>
+                            <p class="text-sm text-gray-600 mb-4">Submit feature requests and vote on proposals from the community.</p>
+                            <a href="https://github.com/basil-retriever/Basil/issues/new?assignees=&labels=enhancement&template=feature_request.md" target="_blank" class="text-purple-600 hover:text-purple-800 text-sm font-medium">
+                                Request Feature →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

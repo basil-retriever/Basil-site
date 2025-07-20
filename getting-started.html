@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Basil Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* Sidebar hover effects */
+        .sidebar-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Card hover effects */
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hot badge */
+        .hot-badge {
+            background: linear-gradient(135deg, #ff6b35, #ff8e53);
+        }
+
+        /* Code syntax highlighting */
+        .code-block {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #e2e8f0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-inline {
+            background: #f1f5f9;
+            padding: 0.125rem 0.25rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white border-r border-gray-200 flex flex-col">
+        <!-- Header -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-black rounded-md flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-semibold text-gray-900">Basil Docs</h1>
+                    <p class="text-xs text-gray-500">v1.0.0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="p-4 border-b border-gray-200">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" placeholder="Search" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex-1 overflow-y-auto">
+            <nav class="p-4 space-y-2">
+                <a href="docs.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Documentation</span>
+                    </div>
+                </a>
+
+                <div class="sidebar-item p-2 rounded-md cursor-pointer">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Themes</span>
+                        </div>
+                        <span class="hot-badge text-xs text-white px-2 py-1 rounded-full font-medium">Hot</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/basil-retriever/Basil" target="_blank" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">GitHub</span>
+                        <svg class="w-3 h-3 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </div>
+                </a>
+            </nav>
+
+            <div class="px-4 py-2">
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Menu</p>
+            </div>
+
+            <nav class="px-4 space-y-1">
+                <a href="getting-started.html" class="sidebar-item p-2 rounded-md cursor-pointer bg-blue-50 border-l-4 border-blue-500 block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.67 10.73a3.52 3.52 0 0 0-.94 1.93 5 5 0 0 0-.07 1.1v.58h.8a5.05 5.05 0 0 0 .88-.08 3.46 3.46 0 0 0 1.93-.94 1.76 1.76 0 0 0-.14-2.48 1.76 1.76 0 0 0-2.46-.11zm1.74 1.73a2.26 2.26 0 0 1-1.26.6h-.22v-.22a2.26 2.26 0 0 1 .6-1.26.36.36 0 0 1 .24-.08.67.67 0 0 1 .47.22.54.54 0 0 1 .17.74zM14.65 2.24a.91.91 0 0 0-.89-.89A8.75 8.75 0 0 0 7.27 3.5L5.64 5.4l-2.4-.5a1 1 0 0 0-.92.27l-.68.68a1 1 0 0 0-.28.81 1 1 0 0 0 .45.74l2.06 1.32.13.08 3.2 3.25.08.08 1.32 2.06a1 1 0 0 0 .74.45h.11a1 1 0 0 0 .7-.29l.68-.68a1 1 0 0 0 .27-.92l-.5-2.39 1.84-1.58a8.79 8.79 0 0 0 2.21-6.54zM3.11 6.15l1.32.28-.64.75-1-.67zm6.38 7.1-.67-1 .75-.64.28 1.32zm2.39-5.11.18.17zm-.28-.28L7.92 11 5 8.08 8.14 4.4a7.44 7.44 0 0 1 5.26-1.8 7.48 7.48 0 0 1-1.8 5.26z"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-blue-900">Getting Started</span>
+                    </div>
+                </a>
+
+                <a href="installation.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Installation</span>
+                    </div>
+                </a>
+
+                <a href="api-overview.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">API Overview</span>
+                    </div>
+                </a>
+
+                <a href="roadmap.html" class="sidebar-item p-2 rounded-md cursor-pointer block">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-6-6 6-6M15 4l6 6-6 6"></path>
+                        </svg>
+                        <span class="text-sm text-gray-700">Roadmap</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b border-gray-200 px-6 py-4">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <span>Basil</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span>Getting Started</span>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto bg-gray-50">
+            <div class="max-w-4xl mx-auto px-6 py-8">
+                <!-- Header -->
+                <div class="mb-8">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Getting Started with Basil</h1>
+                    <p class="text-lg text-gray-600">Transform any website into a searchable knowledge base with AI-powered content scraping and semantic search.</p>
+                </div>
+
+                <!-- What is Basil section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">What is Basil?</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <p class="text-gray-700 mb-4">
+                            <strong>Basil</strong> is an AI-powered website content scraper and semantic search engine that transforms any website into a searchable knowledge base. With just one command, you can scrape, process, and deploy a powerful search interface for any website.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-medium text-gray-900">Intelligent Scraping</h3>
+                                <p class="text-sm text-gray-600 mt-1">Automatic link discovery with rate limiting</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-medium text-gray-900">AI Processing</h3>
+                                <p class="text-sm text-gray-600 mt-1">Generate search patterns with Groq API</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-medium text-gray-900">Semantic Search</h3>
+                                <p class="text-sm text-gray-600 mt-1">Vector-based similarity search</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Start section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Quick Start</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">One-Command Deployment</h3>
+                        <p class="text-gray-700 mb-4">Get started with Basil in just one command. This will scrape, process, and serve your website:</p>
+                        <div class="code-block">
+                            <code>python pipeline.py --url https://example.com --all</code>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-medium text-gray-900 mb-3">What this command does:</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
+                                        <span class="text-xs font-medium text-blue-600">1</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Scrapes the website</p>
+                                        <p class="text-sm text-gray-600">Discovers and downloads all linked pages with intelligent rate limiting</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
+                                        <span class="text-xs font-medium text-green-600">2</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Processes content with AI</p>
+                                        <p class="text-sm text-gray-600">Generates search patterns and metadata using Groq API</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center mt-0.5">
+                                        <span class="text-xs font-medium text-purple-600">3</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Creates vector database</p>
+                                        <p class="text-sm text-gray-600">Builds ChromaDB collection for semantic search</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-5 h-5 bg-orange-100 rounded-full flex items-center justify-center mt-0.5">
+                                        <span class="text-xs font-medium text-orange-600">4</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Starts API server</p>
+                                        <p class="text-sm text-gray-600">Launches FastAPI server at <span class="code-inline">http://localhost:8000</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step by Step section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Step-by-Step Guide</h2>
+                    <div class="space-y-6">
+                        <!-- Step 1 -->
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Step 1: Scrape Website Content</h3>
+                            <p class="text-gray-700 mb-4">Start by scraping the target website. This discovers all internal links and downloads page content:</p>
+                            <div class="code-block">
+                                <code>python pipeline.py --url https://example.com --scrape</code>
+                            </div>
+                            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                                <p class="text-sm text-blue-800">
+                                    <strong>Performance:</strong> Basil scrapes at 1-2 pages per second with intelligent rate limiting to respect server resources.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Step 2: Process Content with AI</h3>
+                            <p class="text-gray-700 mb-4">Use AI to generate search patterns and metadata for each page:</p>
+                            <div class="code-block">
+                                <code>python pipeline.py --process</code>
+                            </div>
+                            <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                                <p class="text-sm text-green-800">
+                                    <strong>AI Power:</strong> Generates 10-50 natural language search patterns per page using the Groq API.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Step 3: Load into Vector Database</h3>
+                            <p class="text-gray-700 mb-4">Create the ChromaDB vector database for semantic search:</p>
+                            <div class="code-block">
+                                <code>python pipeline.py --load</code>
+                            </div>
+                            <div class="mt-4 p-4 bg-purple-50 rounded-lg">
+                                <p class="text-sm text-purple-800">
+                                    <strong>Vector Search:</strong> Uses sentence transformers to create embeddings for sub-second search responses.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Step 4: Start the API Server</h3>
+                            <p class="text-gray-700 mb-4">Launch the FastAPI server to begin searching:</p>
+                            <div class="code-block">
+                                <code>python pipeline.py --serve</code>
+                            </div>
+                            <div class="mt-4 p-4 bg-orange-50 rounded-lg">
+                                <p class="text-sm text-orange-800">
+                                    <strong>Ready to Search:</strong> API available at <span class="code-inline">http://localhost:8000</span> with full OpenAPI documentation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Your Setup section -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Test Your Setup</h2>
+                    <div class="bg-white rounded-lg border border-gray-200 p-6">
+                        <p class="text-gray-700 mb-4">Once your server is running, test the search functionality:</p>
+                        
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Simple Search Query</h3>
+                        <div class="code-block mb-4">
+                            <code>curl "http://localhost:8000/search/query?q=website%20development&max_results=5"</code>
+                        </div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">JSON Search Request</h3>
+                        <div class="code-block mb-4">
+                            <code>curl -X POST "http://localhost:8000/search" \<br>
+  -H "Content-Type: application/json" \<br>
+  -d '{"query": "website development", "max_results": 5}'</code>
+                        </div>
+
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">API Documentation</h3>
+                        <p class="text-gray-700">
+                            Visit <a href="http://localhost:8000/docs" class="text-blue-600 hover:text-blue-800 underline">http://localhost:8000/docs</a> 
+                            for interactive API documentation powered by Swagger UI.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next Steps section -->
+                <div class="bg-white rounded-lg border border-gray-200 p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Next Steps</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Installation Guide</h3>
+                            <p class="text-gray-600 mb-4">Learn about Docker deployment, configuration options, and production setup.</p>
+                            <a href="installation.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                                Read Installation Guide
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">API Reference</h3>
+                            <p class="text-gray-600 mb-4">Explore all available endpoints, parameters, and response formats.</p>
+                            <a href="api-overview.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                                View API Reference
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
